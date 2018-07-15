@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { MapPage } from '../map/map';
 
 /**
  * Generated class for the ProfilePage page.
@@ -22,4 +23,8 @@ export class ProfilePage {
     console.log('ionViewDidLoad ProfilePage');
   }
 
+  goToMap() {
+    this.navCtrl.push(MapPage)
+  }
+  
 }
