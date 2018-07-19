@@ -17,12 +17,10 @@ export class DestinationDetailsPage {
 
   public destination: any = {};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.destination = this.navParams.data;
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DestinationDetailsPage');
+    this.destination = this.navParams.data;
   }
 
 }

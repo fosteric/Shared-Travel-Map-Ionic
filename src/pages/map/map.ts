@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { DestinationDetailsPage } from '../destination-details/destination-details';
+import { DestinationsApiProvider } from '../../providers/destinations-api/destinations-api';
+import { AddDestinationPage } from '../add-destination/add-destination';
 
 /**
  * Generated class for the MapPage page.
@@ -16,21 +18,46 @@ import { DestinationDetailsPage } from '../destination-details/destination-detai
 })
 export class MapPage {
 
-  public destinations = [
-    { id: 1, destinationType: 'past', city: 'Tokyo', country: 'Japan', month: 'Feb ', year: '2018', travelType: 'personal', favoriteThing: 'cleanliness'},
-    { id: 2, destinationType: 'future', city: 'Cape Town', country: 'South Africa', month: '', year: '', travelType: 'personal', favoriteThing: ''},
-    { id: 3, destinationType: 'future', city: 'London', country: 'United Kingdom', month: '', year: '', travelType: 'personal', favoriteThing: ''},
-  ]
+  public destinations: any = [];
+  public destination: any = {};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    public destinationApiProvider: DestinationsApiProvider,
+    public loadingController: LoadingController) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MapPage');
+
+    let loader = this.loadingController.create({
+      content: 'Getting destinations...'
+    });
+
+    loader.present().then(() => {
+      this.getAllDestinations();
+      loader.dismiss();
+    });
+
   }
 
   goToDestinationDetails($event, destination){
     this.navCtrl.push(DestinationDetailsPage, destination);
   }
 
+  getAllDestinations() {
+    this.destinationApiProvider.getAllDestinations().subscribe(destinations => {
+      this.destinations = destinations.json();
+    })
+  }
+
+  getDestinationById() {
+    let selectedDestination = this.navParams.data;
+    this.destinationApiProvider.getDestinationById(selectedDestination.id).subscribe(data => {
+      this.destination = data.destination;
+    })
+  }
+
+  goToAddDestination() {
+    this.navCtrl.push(AddDestinationPage);
+  }
 }

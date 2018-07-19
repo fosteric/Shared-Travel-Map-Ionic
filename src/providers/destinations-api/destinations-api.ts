@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Http } from '@angular/http'
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 /*
   Generated class for the DestinationsApiProvider provider.
@@ -10,15 +11,24 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class DestinationsApiProvider {
-  private baseUrl = "http://localhost:8080"
+  private destinationUrl = "http://localhost:9090/api/v1/destinations"
 
-  constructor(public http: Http) {
+  constructor(private http: Http) {
   }
 
-  getDestinations() {
-    return new Promise(resolve =>{
-      this.http.get(`${this.baseUrl}/destinations.json`).subscribe(res => resolve(res.json()));
-    })
+  getAllDestinations() {
+    return this.http.get(this.destinationUrl);
   }
+
+  getDestinationById(destinationId) : Observable<any> {
+    return this.http.get(`this.destinationUrl/${destinationId}`)
+      .map(response => {
+        return response.json();
+      })
+  }
+
+  // createDestination(destination: Destination): Observable<Destination> {
+  //   return this.http.post<Destination>(this.destinationUrl, )
+  // }
 
 }

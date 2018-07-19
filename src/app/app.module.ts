@@ -15,6 +15,7 @@ import { ProfilePage } from '../pages/profile/profile';
 import { MapPage } from '../pages/map/map';
 import { DestinationDetailsPage } from '../pages/destination-details/destination-details';
 import { DestinationsApiProvider } from '../providers/destinations-api/destinations-api';
+import { AddDestinationPage } from '../pages/add-destination/add-destination';
 
 const config = {
   issuer: 'https://dev-270119.oktapreview.com/oauth2/default',
@@ -30,6 +31,7 @@ const config = {
     SignupPage,
     ProfilePage,
     MapPage,
+    AddDestinationPage,
     DestinationDetailsPage
   ],
   imports: [
@@ -45,6 +47,7 @@ const config = {
     SignupPage,
     ProfilePage,
     MapPage,
+    AddDestinationPage,
     DestinationDetailsPage
   ],
   providers: [
