@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { AddDestinationPage } from './add-destination';
-import { DestinationsApiProvider } from '../../providers/destinations-api/destinations-api';
+import { DestinationService } from '../../services/destination-service/destination-service';
 
 @NgModule({
   declarations: [
     AddDestinationPage,
   ],
   imports: [
-    DestinationsApiProvider,
+    DestinationService,
     IonicPageModule.forChild(AddDestinationPage),
   ],
 })

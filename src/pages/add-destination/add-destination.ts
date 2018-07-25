@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { DestinationsApiProvider } from '../../providers/destinations-api/destinations-api';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DestinationService } from '../../services/destination-service/destination-service';
+import { Destination } from '../../model/destination-model';
+import { MapPage } from '../map/map';
+import { Profile } from '../../model/profile-model';
 
 /**
  * Generated class for the AddDestinationPage page.
@@ -18,12 +21,24 @@ import { DestinationsApiProvider } from '../../providers/destinations-api/destin
 export class AddDestinationPage {
 
   destinationForm: FormGroup;
+  destination: Destination;
+  profile : Profile = { 
+    id : 1,
+    userName : "JohnDoe",
+    homeCity : "",
+    homeCountry : "",
+    description : "",
+    imagePath : "",
+    friendList : null,
+    user : null
+  };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    private formBuilder: FormBuilder, public destinationApiProvider: DestinationsApiProvider) {
+    private formBuilder: FormBuilder, public destinationService: DestinationService) {
     this.destinationForm = this.formBuilder.group({
-      city: [''],
-      country: ['']
+      destinationState: ['', Validators.required],
+      city: ['', Validators.required],
+      country: ['', Validators.required]
     });
   }
 
@@ -32,7 +47,13 @@ export class AddDestinationPage {
   }
 
   createDestination() {
-
+    this.destination = this.destinationForm.value;
+    this.destination.profile = this.profile;
+    this.destinationService.createDestination(this.destination).subscribe(data => this.destination = data as Destination,
+      err => {
+        console.log(err);
+      })
+      this.navCtrl.push(MapPage);
   }
 
 }

@@ -8,14 +8,13 @@ import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
-import { OktaAuthModule, OktaCallbackComponent } from '@okta/okta-angular';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ProfilePage } from '../pages/profile/profile';
 import { MapPage } from '../pages/map/map';
 import { DestinationDetailsPage } from '../pages/destination-details/destination-details';
-import { DestinationsApiProvider } from '../providers/destinations-api/destinations-api';
 import { AddDestinationPage } from '../pages/add-destination/add-destination';
+import { DestinationService } from '../services/destination-service/destination-service';
 
 const config = {
   issuer: 'https://dev-270119.oktapreview.com/oauth2/default',
@@ -53,8 +52,8 @@ const config = {
   providers: [
     StatusBar,
     SplashScreen,
+    DestinationService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DestinationsApiProvider
   ]
 })
 export class AppModule {}

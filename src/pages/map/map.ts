@@ -1,15 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { DestinationDetailsPage } from '../destination-details/destination-details';
-import { DestinationsApiProvider } from '../../providers/destinations-api/destinations-api';
 import { AddDestinationPage } from '../add-destination/add-destination';
-
-/**
- * Generated class for the MapPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { DestinationService } from '../../services/destination-service/destination-service';
 
 @IonicPage()
 @Component({
@@ -23,7 +16,7 @@ export class MapPage {
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
-    public destinationApiProvider: DestinationsApiProvider,
+    public destinationService: DestinationService,
     public loadingController: LoadingController) {
   }
 
@@ -45,19 +38,16 @@ export class MapPage {
   }
 
   getAllDestinations() {
-    this.destinationApiProvider.getAllDestinations().subscribe(destinations => {
-      this.destinations = destinations.json();
-    })
-  }
-
-  getDestinationById() {
-    let selectedDestination = this.navParams.data;
-    this.destinationApiProvider.getDestinationById(selectedDestination.id).subscribe(data => {
-      this.destination = data.destination;
+    this.destinationService.getAllDestinations().subscribe(destinations => this.destinations = destinations,
+      err => {
+      console.log(err);
     })
   }
 
   goToAddDestination() {
     this.navCtrl.push(AddDestinationPage);
   }
+
+  
+
 }
