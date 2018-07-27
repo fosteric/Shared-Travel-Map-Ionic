@@ -68,10 +68,10 @@ var AddDestinationPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-add-destination',template:/*ion-inline-start:"/Users/ericf/ZCWProjects/SharedTravelMapIonicApp/src/pages/add-destination/add-destination.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Add Destination</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <form [formGroup]="destinationForm">\n        <ion-list radio-group formControlName="destinationState">\n            <ion-item>\n              <ion-label>Want to go</ion-label>\n              <ion-radio value="future"></ion-radio>\n            </ion-item>\n            <ion-item>\n              <ion-label>Have been to</ion-label>\n              <ion-radio value="past"></ion-radio>\n            </ion-item>\n        </ion-list>\n\n    <ion-item>\n      <ion-label stacked>City</ion-label>\n      <ion-input formControlName="city" type="text"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label stacked>Country</ion-label>\n      <ion-input formControlName="country" type="text"></ion-input>\n    </ion-item>\n\n    <button ion-button full color="primary" style="margin-top: 20px;" \n    type="submit" [disabled]="!destinationForm.valid" (click)=createDestination()>Add</button>\n\n  </form>\n</ion-content>\n'/*ion-inline-end:"/Users/ericf/ZCWProjects/SharedTravelMapIonicApp/src/pages/add-destination/add-destination.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__services_destination_service_destination_service__["a" /* DestinationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_destination_service_destination_service__["a" /* DestinationService */]) === "function" && _d || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_3__services_destination_service_destination_service__["a" /* DestinationService */]])
     ], AddDestinationPage);
     return AddDestinationPage;
-    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=add-destination.js.map
@@ -257,7 +257,7 @@ var SignupPage = /** @class */ (function () {
     };
     SignupPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-signup',template:/*ion-inline-start:"/Users/ericf/ZCWProjects/SharedTravelMapIonicApp/src/pages/signup/signup.html"*/'<!--\n  Generated template for the SignupPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>signup</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-input placeholder="Email" type="text" required #email></ion-input>\n  <ion-input placeholder="Password" type="text" required #password></ion-input>\n  <ion-input placeholder="First Name" type="text" #firstName></ion-input>\n  <ion-input placeholder="Last Name" type="text" #lastName></ion-input>\n</ion-content>\n'/*ion-inline-end:"/Users/ericf/ZCWProjects/SharedTravelMapIonicApp/src/pages/signup/signup.html"*/,
+            selector: 'page-signup',template:/*ion-inline-start:"/Users/ericf/ZCWProjects/SharedTravelMapIonicApp/src/pages/signup/signup.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Sign Up</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <form [formGroup]="signupForm">\n    <ion-item>\n      <ion-label stacked>Username</ion-label>\n      <ion-input formControlName="userName" type="text" placeholder="Username" required #userName></ion-input>\n    </ion-item>\n  \n    <ion-item>\n      <ion-label stacked>First name</ion-label>\n      <ion-input placeholder="First Name" type="text" required #firstName></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label stacked>Last name</ion-label>\n      <ion-input placeholder="Last Name" type="text" required #lastName></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label stacked>E-mail</ion-label>\n      <ion-input placeholder="Email" type="text" required #email></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label stacked>Password</ion-label>\n      <ion-input placeholder="Password" type="text" required #password></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label stacked>Re-enter password</ion-label>\n      <ion-input placeholder="Re-enter Password" type="text" required #passwordreentry></ion-input>\n    </ion-item>\n\n    <button ion-button full color="primary" style="margin-top: 20px;" \n    type="submit" [disabled]="!destinationForm.valid" (click)=createDestination()>Add</button>\n  </form>\n</ion-content>'/*ion-inline-end:"/Users/ericf/ZCWProjects/SharedTravelMapIonicApp/src/pages/signup/signup.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
     ], SignupPage);
@@ -298,19 +298,19 @@ var map = {
 		4
 	],
 	"../pages/login/login.module": [
-		682,
+		681,
 		3
 	],
 	"../pages/map/map.module": [
-		681,
+		682,
 		2
 	],
 	"../pages/profile/profile.module": [
-		683,
+		684,
 		1
 	],
 	"../pages/signup/signup.module": [
-		684,
+		683,
 		0
 	]
 };
@@ -452,10 +452,10 @@ var AppModule = /** @class */ (function () {
                     links: [
                         { loadChildren: '../pages/add-destination/add-destination.module#AddDestinationPageModule', name: 'AddDestinationPage', segment: 'add-destination', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/destination-details/destination-details.module#DestinationDetailsPageModule', name: 'DestinationDetailsPage', segment: 'destination-details', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/map/map.module#MapPageModule', name: 'MapPage', segment: 'map', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/map/map.module#MapPageModule', name: 'MapPage', segment: 'map', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] }
                     ]
                 })
             ],
