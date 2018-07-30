@@ -1,16 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SignupService } from '../../services/user-service/signup-service';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { User } from '../../model/user-model';
 import { MapPage } from '../map/map';
-
-/**
- * Generated class for the SignupPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -19,10 +12,19 @@ import { MapPage } from '../map/map';
 })
 export class SignupPage {
 
-  userForm : FormGroup;
+  signupForm : FormGroup;
   user : User;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public signupService: SignupService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public signupService: SignupService, private formBuilder: FormBuilder) {
+    this.signupForm = this.formBuilder.group({
+      userName: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      passwordReEntry: ['', Validators.required]
+    });
   }
 
   ionViewDidLoad() {
@@ -30,7 +32,8 @@ export class SignupPage {
   }
 
   createUser() {
-    this.user = this.userForm.value;
+    this.user.firstName = this.signupForm.controls.firstName.value;
+    this.user.lastName = this.signupForm.controls.lastName.value;
     this.signupService.createUser(this.user).subscribe(data => this.user = data as User,
       err => {
         console.log(err);

@@ -6,13 +6,6 @@ import { Destination } from '../../model/destination-model';
 import { MapPage } from '../map/map';
 import { Profile } from '../../model/profile-model';
 
-/**
- * Generated class for the AddDestinationPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-add-destination',

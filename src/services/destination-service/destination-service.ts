@@ -6,12 +6,6 @@ import { Destination } from '../../model/destination-model';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-/*
-  Generated class for the DestinationsApiProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class DestinationService {
   

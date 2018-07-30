@@ -15,6 +15,8 @@ import { MapPage } from '../pages/map/map';
 import { DestinationDetailsPage } from '../pages/destination-details/destination-details';
 import { AddDestinationPage } from '../pages/add-destination/add-destination';
 import { DestinationService } from '../services/destination-service/destination-service';
+import { SignupService } from '../services/user-service/signup-service';
+import { HttpClientModule } from '@angular/common/http';
 
 const config = {
   issuer: 'https://dev-270119.oktapreview.com/oauth2/default',
@@ -36,6 +38,7 @@ const config = {
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -53,6 +56,7 @@ const config = {
     StatusBar,
     SplashScreen,
     DestinationService,
+    SignupService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })
