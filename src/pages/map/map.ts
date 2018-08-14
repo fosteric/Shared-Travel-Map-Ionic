@@ -1,8 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { DestinationDetailsPage } from '../destination-details/destination-details';
 import { AddDestinationPage } from '../add-destination/add-destination';
 import { DestinationService } from '../../services/destination-service/destination-service';
+import { GoogleMaps, GoogleMap, LatLng, GoogleMapsEvent, Marker, MarkerOptions } from '@ionic-native/google-maps';
+declare var google;
 
 @IonicPage()
 @Component({
@@ -11,7 +13,7 @@ import { DestinationService } from '../../services/destination-service/destinati
 })
 export class MapPage {
 
-  @ViewChild('map') mapElement;
+  @ViewChild('map') mapElement: ElementRef;
   map: any;
   public destinations: any = [];
   public destination: any = {};
@@ -33,22 +35,18 @@ export class MapPage {
       loader.dismiss();
     });
 
-    this.initMap();
-
   }
 
-  initMap(){
-    let latLng = new google.maps.LatLng(-34.9290, 138.6010)
+  // initMap(){
+  //   let latLng = new google.maps.LatLng(-34.9290, 138.6010);
 
-    let mapOptions = {
-      center: latLng,
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
+  //   let mapOptions = {
+  //     center: latLng,
+  //     zoom: 15,
+  //     mapTypeId: google.maps.mapTypeId
+  //   }
 
-    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-
-  }
+  // }
 
   goToDestinationDetails($event, destination){
     this.navCtrl.push(DestinationDetailsPage, destination);
@@ -64,7 +62,5 @@ export class MapPage {
   goToAddDestination() {
     this.navCtrl.push(AddDestinationPage);
   }
-
-  
 
 }

@@ -16,8 +16,8 @@ export class AddDestinationPage {
   destinationForm: FormGroup;
   destination: Destination;
   profile : Profile = { 
-    id : 1,
-    userName : "JohnDoe",
+    id : 3,
+    userName : "johnDoe",
     homeCity : "",
     homeCountry : "",
     description : "",

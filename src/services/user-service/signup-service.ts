@@ -11,7 +11,6 @@ export class SignupService {
     constructor(protected httpClient: HttpClient) {
     }
 
-    //CREATE
     createUser(user: User): Observable<User> {
       return this.httpClient
         .post<User>(this.userUrl, user)
